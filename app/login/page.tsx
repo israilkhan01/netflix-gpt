@@ -7,15 +7,16 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import firebase from 'firebase/compat/app';
 import { auth } from "../utils/firebase";
 type ErrorType = null | string;
-type StringFieldType = string;
+
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<ErrorType>(null);
-  const name = useRef(null);
-  const email = useRef(null);
-  const password = useRef(null);
+  const name = useRef<HTMLInputElement>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
 
 
   const toggleSignInForm = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,45 +25,48 @@ const Login = () => {
   };
   const handlebuttonClick = (e: any) => {
     e.preventDefault();
-    const EmailId= email.current?.value;
-    const Password= password.current?.value;
-    const message: ErrorType = checkValidData(EmailId, Password);
-    setErrorMessage(message);
-    if (message) return;
+    const EmailId = email.current?.value;
+    const Password = password.current?.value;
+    if (EmailId != null && Password != null) {
+      const message: ErrorType = checkValidData(EmailId , Password);
+      setErrorMessage(message);
+      if (message) return;
 
-    if (!isSignInForm) {
-      //sign up logic
 
-      createUserWithEmailAndPassword(auth, EmailId, Password)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          console.log(user)
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          setErrorMessage(errorCode + " - " + error.message);
-          // ..
-        });
-    } else {
-      //sign in logic
+      if (!isSignInForm) {
+        //sign up logic
 
-      signInWithEmailAndPassword(auth, EmailId, Password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + error.message);
-        });
+        createUserWithEmailAndPassword(auth, EmailId, Password)
+          .then((userCredential) => {
+            // Signed up 
+            const user = userCredential.user;
+            console.log(user)
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            setErrorMessage(errorCode);
+            // ..
+          });
+      } else {
+        //sign in logic
+
+        signInWithEmailAndPassword(auth, EmailId, Password)
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode);
+          });
+      }
     }
   }
   return (
-    <div>
+    <main>
       <div className="w-full top-0 h-full absolute bg-cover bg-center bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/e4b3c14a-684b-4fc4-b14f-2b486a4e9f4e/IN-en-20240219-popsignuptwoweeks-perspective_alpha_website_medium.jpg')]" >
         <form className='mt-[100px] bg-gradient-to-bl bg-black-trans p-12 w-fit mx-auto'>
           <h1 className='text-3xl pb-8 text-white'>
@@ -90,7 +94,7 @@ const Login = () => {
           </p>}
         </form>
       </div>
-    </div>
+    </main>
   )
 }
 

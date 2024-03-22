@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Header from "./Header/Header";
 import { useRouter } from "next/router";
