@@ -35,11 +35,18 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+# RTK in Next JS with TypeScript
+ - create a store file to configure the store
+ - create a saparate ReduxProvider.tsx file to Wrap the Provider with children component like e.g. <Provider store = {store}>{children}</Provider>
+ - create slices(including the state interface) + Action type
+    export the actions and the reducer
+ - Now import this slice in store file and configure the reducer with path.
 
 # Features
 - Login/Signup Page
   - SignIn / SignUp Form
   - Redirect to Browse Page
+
 - Browse (After Authentication)
  - Header
  - Main Movie

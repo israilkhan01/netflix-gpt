@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import firebase from 'firebase/compat/app';
 import { auth } from "../utils/firebase";
+import { useRouter } from 'next/navigation';
 type ErrorType = null | string;
 
 const Login = () => {
@@ -17,7 +18,7 @@ const Login = () => {
   const name = useRef<HTMLInputElement>(null);
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
-
+  const router = useRouter()
 
   const toggleSignInForm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -55,6 +56,9 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            console.log(user)
+            router.replace("/browse")
+            
             // ...
           })
           .catch((error) => {
