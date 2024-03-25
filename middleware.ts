@@ -5,7 +5,7 @@ import { redirect } from 'next/dist/server/api-utils';
  
 export default function middleware(request: NextRequest) {
   const currentUser = request.cookies.get('currentUser')?.value
-  console.log("middleware",currentUser)
+  // console.log("middleware",currentUser)
   // onAuthStateChanged(auth, (user) => {
   //   console.log("inside onAuthStateChanged1",user)
   //   if (user) {

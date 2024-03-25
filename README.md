@@ -35,12 +35,23 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+
+
 # RTK in Next JS with TypeScript
  - create a store file to configure the store
  - create a saparate ReduxProvider.tsx file to Wrap the Provider with children component like e.g. <Provider store = {store}>{children}</Provider>
  - create slices(including the state interface) + Action type
     export the actions and the reducer
  - Now import this slice in store file and configure the reducer with path.
+
+
+# Authentication using firebase
+ - create a AuthContext and wrap it with the RootLayout
+ - AuthContext will have onAuthStateChanged function from firebase which will be called when the auth state is changed
+ - If user is not authenticated then it will navigate to login page
+ - Otherwise it will navigate to browse page
+ - Also create a protectedRoute and wrap the page with the protected routes.
+
 
 # Features
 - Login/Signup Page
@@ -58,3 +69,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - NetflixGPT
  - Search Bar
  - Movie Suggestions
+
+
+# TMDB Movie Database
+ - Regiter TMDB API & create an app & get access token
+ - Get Data from TMDB now playing movies list API

@@ -10,6 +10,7 @@ import { addUser, removeUser } from "../utils/store/slices/userSlice";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "../utils/store/appStore";
+import { PROFILE_IMAGE } from "../utils/constants";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Header = () => {
             </div>
             {currentUser.user&&<div className="text-yellow-500 text-lg font-bold flex align-middle">
                 <Image
-                 src={"https://avatars.githubusercontent.com/u/44443989?v=4"}
+                 src={PROFILE_IMAGE}
                  alt="Profile Photo"
                  width={30}
                  height={30}
