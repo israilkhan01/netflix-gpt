@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./Header/Header";
 import { useRouter } from "next/router";
 import ReduxProvider from "./utils/store/ReduxProvider";
+import { AuthContextProvider } from "./utils/contexts/authContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={inter.className}>
-          <Header />
-          {children}
-        </body>
+        <AuthContextProvider>
+          <body className={inter.className}>
+            <Header />
+            {children}
+          </body>
+        </AuthContextProvider>
       </ReduxProvider>
     </html>
   );
