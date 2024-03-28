@@ -1,8 +1,14 @@
+'use client'
 import React from 'react'
+import MainContainer from './MainContainer'
+import useNowPlayingMovies from '../utils/customHooks/useNowPlayingMovies'
 
 const Browse = () => {
+  useNowPlayingMovies();
   return (
-    <div>Browse Page</div>
+    <div className='mt-[100px]'>
+      <MainContainer/>
+    </div>
   )
 }
 

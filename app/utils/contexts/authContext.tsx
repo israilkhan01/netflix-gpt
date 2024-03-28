@@ -38,7 +38,7 @@ export const AuthContextProvider = ({
             })
           );
           setUser(user)
-          router.push("/");
+          router.push("/browse");
         } else {
           dispatch(removeUser());
           setUser(null);
@@ -50,19 +50,6 @@ export const AuthContextProvider = ({
       // Unsiubscribe when component unmounts
       return () => unsubscribe();
 },[]);
-
-//   const signup = (email: string, password: string) => {
-//     return createUserWithEmailAndPassword(auth, email, password)
-//   }
-
-//   const login = (email: string, password: string) => {
-//     return signInWithEmailAndPassword(auth, email, password)
-//   }
-
-//   const logout = async () => {
-//     setUser(null)
-//     await signOut(auth)
-//   }
 
   return (
     <AuthContext.Provider value={{ user }}>
