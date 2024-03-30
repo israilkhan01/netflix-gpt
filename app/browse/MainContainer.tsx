@@ -1,23 +1,13 @@
 "use client"
-import { useSelector } from "react-redux";
-import VideoBackground from "./VideoBackground";
-import VideoTitle from "./VideoTitle";
-import { RootState } from "../utils/store/appStore";
+import useNowPlayingMovies from "../utils/customHooks/useNowPlayingMovies";
+import LandingContainer from "./LandingContainer";
 
-const MainContainer = () => {
-    const movies: any = useSelector((store: RootState) => store.movies?.nowPlayingMovies);
-    console.log(movies);
-    if (!movies) return;
-
-    const mainMovie = movies[0];
-
-    const { original_title, overview, id } = mainMovie;
-
+const MainContainer = ({data}:any) => {
+    useNowPlayingMovies(data);
     return (
-        <div className="pt-[30%] bg-black md:pt-0">
-            Main Container
-            <VideoTitle title={original_title} overview={overview} />
-            <VideoBackground movieId={id} />
+        <div className="pt-[30%] bg-black text-white md:pt-0">
+            <h1>Main Browse Page</h1>
+            <LandingContainer/>
         </div>
     );
 };
