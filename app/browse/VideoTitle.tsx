@@ -1,6 +1,6 @@
 import React from 'react'
 
-function VideoTitle({title,overview}) {
+function VideoTitle({title,overview}:any) {
   return (
     <div>VideoTitle</div>
   )

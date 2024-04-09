@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import Image from "next/image"
-import LogoImg from "../../public/Netflix_Logo_PMS.png"
+// import LogoImg from "../../public/Netflix_Logo_PMS.png"
 import { onAuthStateChanged,signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { auth } from "../utils/firebase";
@@ -31,7 +31,7 @@ const Header = () => {
             <div className="">
                 <Link href="/">
                     <Image
-                        src={LogoImg}
+                        src={"/Netflix_Logo_PMS.png"}
                         width={200}
                         height={50}
                         alt="logo"

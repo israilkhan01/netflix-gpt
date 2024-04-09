@@ -1,6 +1,6 @@
 import React from 'react'
 
-function VideoBackground({movieId}) {
+function VideoBackground({movieId}:any) {
   return (
     <div>
         {movieId}
